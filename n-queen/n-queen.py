@@ -2,18 +2,18 @@ def permutation(n, f):
     queue = [([], list(range(n)))]
     results = []
     while len(queue) > 0:
-        p, u = queue.pop()
-        len_u = len(u)
-        len_t = len(p)+1
+        permutation_list, unused_number = queue.pop()
+        len_u = len(unused_number)
+        len_t = len(permutation_list)+1
         if len_u > 0:
             for i in range(len_u):
-                temp = p[:]
-                temp.append(u[i])
+                temp = permutation_list[:]
+                temp.append(unused_number[i])
                 if not f(temp, len_t):
                     continue
-                queue.append((temp, u[:i]+u[i+1:]))
+                queue.append((temp, unused_number[:i]+unused_number[i+1:]))
         else:
-            results.append(p)
+            results.append(permutation_list)
     return results
 
 
@@ -48,4 +48,4 @@ def main1(n=8):
 
 
 print('START!')
-print(len(main1(10)))
+print(len(main1(8)))
