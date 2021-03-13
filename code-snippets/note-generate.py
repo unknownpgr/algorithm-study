@@ -5,7 +5,7 @@ Generate a markdown note for print
 from os import listdir, path
 file = path.basename(__file__)
 dir = path.dirname(__file__)
-with open('Note.md', 'w', encoding='utf-8') as o:
+with open('[Note]Algorithm.md', 'w', encoding='utf-8') as o:
     o.write('# Algorithm Code Snippets\n')
     for source in listdir(dir):
         if not source.endswith('.py'):
