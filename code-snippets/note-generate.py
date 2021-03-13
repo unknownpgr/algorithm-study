@@ -12,7 +12,7 @@ with open('Note.md', 'w', encoding='utf-8') as o:
             continue
         if source == file:
             continue
-        o.write('## '+source.replace('.py', '').capitalize()+'\n')
+        o.write('## '+source.replace('.py', '').strip().title()+'\n')
         o.write('```python\n')
         with open(path.join(dir, source), 'r', encoding='utf-8') as s:
             for line in s:
