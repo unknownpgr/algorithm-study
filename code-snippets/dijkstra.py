@@ -8,17 +8,22 @@ def dijkstra(edges, start):
     dist[start] = 0
     node_from = {start: start}
     queue = []
+
     heapq.heappush(queue, [dist[start], start])
     while len(queue) > 0:
-        current_distance, current_destination = heapq.heappop(queue)
-        if dist[current_destination] < current_distance:
+        curr_dist, curr_dest = heapq.heappop(queue)
+
+        if dist[curr_dest] < curr_dist:
             continue
-        for new_destination, new_distance in edges[current_destination].items():
-            distance = current_distance + new_distance
-            if distance < dist[new_destination]:
-                dist[new_destination] = distance
-                node_from[new_destination] = current_destination
-                heapq.heappush(queue, [distance, new_destination])
+
+        for new_dest, new_dist in edges[curr_dest].items():
+            distance = curr_dist + new_dist
+
+            if distance < dist[new_dest]:
+                dist[new_dest] = distance
+                node_from[new_dest] = curr_dest
+                heapq.heappush(queue, [distance, new_dest])
+
     return dist, node_from
 
 
